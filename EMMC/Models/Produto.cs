@@ -14,6 +14,7 @@ namespace EMMC.Models
         public int ProdutoId { get; set; }
         [Display(Name = "Nome do Produto")]
         public string ProdutoNome { get; set; }
+        [Display(Name = "Descrição do Produto")]
         public string ProdutoDescricao { get; set; }
         [Display(Name = "Quantidade")]
         public int ProdutoQuantidade { get; set; }
