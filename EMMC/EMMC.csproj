@@ -192,6 +192,7 @@
     <Content Include="Views\Produtos\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Index\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711091333330_AddBanco.resx">
