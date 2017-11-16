@@ -163,18 +163,26 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
+    <Compile Include="DAO\AdministradorDAO.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
+    <Compile Include="DAO\LoginAdministradorDAO.cs" />
+    <Compile Include="DAO\LoginClienteDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711091333330_AddBanco.cs" />
-    <Compile Include="Migrations\201711091333330_AddBanco.Designer.cs">
-      <DependentUpon>201711091333330_AddBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201711161325122_AddBanco.cs" />
+    <Compile Include="Migrations\201711161325122_AddBanco.Designer.cs">
+      <DependentUpon>201711161325122_AddBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Administrador.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Entities.cs" />
+    <Compile Include="Models\LoginAdministrador.cs" />
+    <Compile Include="Models\LoginCliente.cs" />
     <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,11 +210,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711091333330_AddBanco.resx">
-      <DependentUpon>201711091333330_AddBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711161325122_AddBanco.resx">
+      <DependentUpon>201711161325122_AddBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

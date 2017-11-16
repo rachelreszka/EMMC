@@ -11,6 +11,7 @@ namespace EMMC.Models
     public class Cliente
     {
         [Key]
+        public int ClienteId { get; set; }
         [Display(Name = "CPF")]
         public string ClienteCpf { get; set; }
         [Display(Name = "Nome Completo")]
@@ -18,6 +19,7 @@ namespace EMMC.Models
         [Display(Name = "Endereço")]
         public string ClienteEndereco { get; set; }
         [Display(Name = "Senha")]
+        [DataType(DataType.Password)]   
         public string ClienteSenha { get; set; }
     }
 }
