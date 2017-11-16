@@ -202,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711091333330_AddBanco.resx">

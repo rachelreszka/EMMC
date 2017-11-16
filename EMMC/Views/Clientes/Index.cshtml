@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<EMMC.Models.Cliente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index Cliente";
 }
 
-<h2>Index</h2>
+<h2>Index do Cliente</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Novo Cliente", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.ClienteSenha)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteCpf }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClienteCpf }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteCpf })
+            @Html.ActionLink("Editar Cliente", "Edit", new { id=item.ClienteCpf }) |
+            @Html.ActionLink("Detalhes do Cliente", "Details", new { id=item.ClienteCpf }) |
+            @Html.ActionLink("Inativar Cliente", "Delete", new { id=item.ClienteCpf })
         </td>
     </tr>
 }
