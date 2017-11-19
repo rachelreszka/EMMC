@@ -1,0 +1,45 @@
+﻿@model EMMC.Models.Administrador
+
+@{
+    ViewBag.Title = "Inativar Administrador";
+}
+
+<h2>Inativar administrador</h2>
+
+<h3>Você tem certeza disso?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdministradorNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdministradorNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdministradorCpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdministradorCpf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdministradorSenha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdministradorSenha)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Index", "Index")
+        </div>
+    }
+</div>

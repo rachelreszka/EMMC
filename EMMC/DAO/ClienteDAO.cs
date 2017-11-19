@@ -1,6 +1,7 @@
 ﻿using EMMC.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -10,12 +11,61 @@ namespace EMMC.DAO
     {
         private static Entities entities = Singleton.Instance.Entities;
 
+
+        // ADD Cliente
+        public static bool AdicionarCliente(Cliente cliente)
+        {
+            try
+            {
+                entities.Clientes.Add(cliente);
+                entities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        // EDIT Cliente
+        public static bool EditarCliente(Cliente cliente)
+        {
+
+            try
+            {
+                entities.Entry(cliente).State = EntityState.Modified;
+                entities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        // LISTAR Clientes
         public static List<Cliente> ListarClientes()
         {
             return entities.Clientes.ToList();
         }
 
-        public static Cliente RetornarUsuarioLogado()
+        // REMOVER Cliente
+        public static bool RemoverCliente(Cliente cliente)
+        {
+            try
+            {
+                entities.Clientes.Remove(cliente);
+                entities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        // Retornar Cliente Logado
+        public static Cliente RetornarClienteLogado()
         {
             try
             {
@@ -35,6 +85,19 @@ namespace EMMC.DAO
                 return null;
             }
             catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        //BUSCAR POR ID
+        public static Cliente BuscarClientePorId(int? id)
+        {
+            try
+            {
+                return entities.Clientes.Find(id);
+            }
+            catch (Exception e)
             {
                 return null;
             }

@@ -1,0 +1,41 @@
+﻿@model EMMC.Models.Cliente
+
+@{
+    ViewBag.Title = "Detalhes Cliente";
+}
+
+<h2>Detalhes do Cliente</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteEndereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteEndereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteSenha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteSenha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Cliente", "Edit", new { id = Model.ClienteCpf }) |
+    @Html.ActionLink("Voltar para a Index", "Index")
+</p>

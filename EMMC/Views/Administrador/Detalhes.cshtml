@@ -1,0 +1,40 @@
+﻿@model EMMC.Models.Administrador
+
+@{
+    ViewBag.Title = "Detalhes Administrador";
+}
+
+<h2>Detalhes do Administrador</h2>
+
+<div>
+    <h4>Administrador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdministradorNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdministradorNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdministradorCpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdministradorCpf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdministradorSenha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdministradorSenha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AdministradorId }) |
+    @Html.ActionLink("Voltar para a Index", "Index")
+</p>

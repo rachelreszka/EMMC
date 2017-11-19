@@ -20,7 +20,7 @@ namespace EMMC.DAO
                 entities.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -59,7 +59,7 @@ namespace EMMC.DAO
                 }
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

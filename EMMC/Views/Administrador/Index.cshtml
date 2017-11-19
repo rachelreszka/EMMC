@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EMMC.Models.Administrador>
+
+@{
+    ViewBag.Title = "Index Administrador";
+}
+
+<h2>Index Administrador</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar novo administrador", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdministradorNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdministradorCpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdministradorSenha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdministradorNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdministradorCpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdministradorSenha)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AdministradorId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.AdministradorId }) |
+            @Html.ActionLink("Inativar", "Delete", new { id=item.AdministradorId })
+        </td>
+    </tr>
+}
+
+</table>

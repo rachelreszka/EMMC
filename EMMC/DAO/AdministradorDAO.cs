@@ -66,7 +66,7 @@ namespace EMMC.DAO
             }
         }
 
-        //RETORNA OU GERA ID PRA SESSão
+        //RETORNA OU GERA ID PRA SESSÃO
         public static string RetornarIdSessao()
         {
             if (HttpContext.Current.Session["Sessao"] == null)
@@ -83,6 +83,27 @@ namespace EMMC.DAO
             return entities.Administradores.ToList();
         }
 
+        // LOGIN
+        public static Administrador LoginAdministrador(Administrador administrador)
+        {
+            try
+            {
+                foreach (Administrador temp in entities.Administradores.ToList())
+                {
+                    if (temp.AdministradorCpf.Equals(administrador.AdministradorCpf))
+                    {
+                        if (temp.AdministradorSenha.Equals(administrador.AdministradorSenha))
+                        {
+                            return temp;
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
-
 }
