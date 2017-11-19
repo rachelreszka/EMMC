@@ -16,8 +16,6 @@ namespace EMMC.Models
         public string ClienteCpf { get; set; }
         [Display(Name = "Nome Completo")]
         public string ClienteNome { get; set; }
-        [Display(Name = "Endereço")]
-        public string ClienteEndereco { get; set; }
         [Display(Name = "Senha")]
         [DataType(DataType.Password)]   
         public string ClienteSenha { get; set; }

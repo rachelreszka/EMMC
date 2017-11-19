@@ -10,12 +10,13 @@ namespace EMMC.DAO
     {
         private static Entities entities = Singleton.Instance.Entities;
 
-        public static bool AdicionaLoginCliente(Cliente cliente)
+        // ADD Login Cli
+        public static bool AdicionaLogin(Cliente cli)
         {
             try
             {
                 LoginCliente login = new LoginCliente();
-                login.LoginClienteCli = cliente;
+                login.LoginClienteCli = cli;
                 login.LoginClienteSessao = RetornarIdSessao();
                 entities.LoginClientes.Add(login);
                 entities.SaveChanges();
@@ -27,33 +28,20 @@ namespace EMMC.DAO
             }
         }
 
-        //LISTAR TODOS
-        public static List<LoginCliente> ListarLoginCliente()
-        {
-            try
-            {
-                return entities.LoginClientes.ToList();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
         //RETORNAR CLIENTE LOGADO
-        public static Cliente RetornaClienteLogado()
+        public static Cliente RetornaCliLogado()
         {
             try
             {
-                foreach (LoginCliente temp in ListarLoginCliente())
+                foreach (LoginCliente temp in ListarLoginCli())
                 {
                     if (temp.LoginClienteSessao.Equals(RetornarIdSessao()))
                     {
-                        foreach (Cliente tempCliente in ClienteDAO.ListarClientes())
+                        foreach (Cliente tempCli in ClienteDAO.ListarClientes())
                         {
-                            if (temp.LoginClienteCli.ClienteId.Equals(tempCliente.ClienteId))
+                            if (temp.LoginClienteCli.ClienteId.Equals(tempCli.ClienteId))
                             {
-                                return tempCliente;
+                                return tempCli;
                             }
                         }
                     }
@@ -67,8 +55,8 @@ namespace EMMC.DAO
         }
 
 
-        //RETORNAR LISTA DE LOGINS
-        public static List<LoginCliente> RetornarListaLoginsClientes()
+        // Lista de login de Clientes
+        public static List<LoginCliente> ListarLoginCli()
         {
             try
             {
@@ -85,15 +73,12 @@ namespace EMMC.DAO
         {
             if (HttpContext.Current.Session["Sessao"] == null)
             {
+                //ESTE GUID GERA UMA SERIE ALFANUMERICA UNICA PARA CADA CARRINHO
                 Guid guid = Guid.NewGuid();
                 HttpContext.Current.Session["Sessao"] = guid.ToString();
             }
             return HttpContext.Current.Session["Sessao"].ToString();
         }
+
     }
-
 }
-
-
-
-

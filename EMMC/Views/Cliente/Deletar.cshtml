@@ -17,15 +17,13 @@
         <dd>
             @Html.DisplayFor(model => model.ClienteNome)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.ClienteEndereco)
+            @Html.DisplayNameFor(model => model.ClienteCpf)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClienteEndereco)
+            @Html.DisplayFor(model => model.ClienteCpf)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ClienteSenha)
         </dt>
@@ -43,5 +41,5 @@
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Voltar para a Index", "Index")
         </div>
-    }
+    } 
 </div>

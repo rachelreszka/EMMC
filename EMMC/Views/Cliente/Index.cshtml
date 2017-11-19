@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.ClienteNome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClienteEndereco)
+            @Html.DisplayNameFor(model => model.ClienteCpf)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ClienteSenha)
@@ -29,15 +29,15 @@
             @Html.DisplayFor(modelItem => item.ClienteNome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClienteEndereco)
+            @Html.DisplayFor(modelItem => item.ClienteCpf)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ClienteSenha)
         </td>
         <td>
-            @Html.ActionLink("Editar Cliente", "Edit", new { id=item.ClienteCpf }) |
-            @Html.ActionLink("Detalhes do Cliente", "Details", new { id=item.ClienteCpf }) |
-            @Html.ActionLink("Inativar Cliente", "Delete", new { id=item.ClienteCpf })
+            @Html.ActionLink("Editar Cliente", "Editar", new { id=item.ClienteId }) |
+            @Html.ActionLink("Detalhes do Cliente", "Detalhes", new { id=item.ClienteId }) |
+            @Html.ActionLink("Inativar Cliente", "Deletar", new { id=item.ClienteId })
         </td>
     </tr>
 }

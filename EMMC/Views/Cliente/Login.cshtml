@@ -1,4 +1,4 @@
-﻿@model EMMC.Models.Administrador
+﻿@model EMMC.Models.Cliente
 
 <html>
 
@@ -26,15 +26,16 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-red" })
 
                     <label>CPF</label>
-                    @Html.EditorFor(model => model.AdministradorCpf)
+                    @Html.EditorFor(model => model.ClienteCpf)
 
                     <label>Senha</label>
-                    @Html.PasswordFor(model => model.AdministradorSenha)
+                    @Html.PasswordFor(model => model.ClienteSenha)
 
-                    @Html.ActionLink("Entrar", "Detalhes", "Cliente", null, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Cadastrar", "Cadastro", "Cliente", null,  new { @class = "btn btn-primary" })
-
+                    <input type="submit" name="btnLogin" placeholder="Login" class="btn-primary"/>
                 }
+                    @Html.ActionLink("Cadastrar", "Create", "Cliente", null,  new { @class = "btn btn-primary" })
+
+                
             </div>
         </div>
     </section>

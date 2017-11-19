@@ -1,7 +1,6 @@
 ﻿using EMMC.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -11,22 +10,83 @@ namespace EMMC.DAO
     {
         private static Entities entities = Singleton.Instance.Entities;
 
-
-        public static bool AdicionarCliente(Cliente cliente)
+        // ADD Login Cli
+        public static bool AdicionaLoginCli(Cliente cli)
         {
             try
             {
-                entities.Clientes.Add(cliente);
+                LoginCliente login = new LoginCliente();
+                login.LoginClienteCli = cli;
+                login.LoginClienteSessao = RetornarIdSessao();
+                entities.LoginClientes.Add(login);
                 entities.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
         }
 
-        public static Cliente LoginCliente(Cliente cliente)
+        //LISTAR TODOS
+        public static List<LoginCliente> ListarLoginCli()
+        {
+            try
+            {
+                return entities.LoginClientes.ToList();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        //RETORNAR CLIENTE LOGADO
+        public static Cliente RetornaCliLogado()
+        {
+            try
+            {
+                foreach (LoginCliente temp in ListarLoginCli())
+                {
+                    if (temp.LoginClienteSessao.Equals(RetornarIdSessao()))
+                    {
+                        foreach (Cliente tempCli in ClienteDAO.ListarClientes())
+                        {
+                            if (temp.LoginClienteCli.ClienteCpf.Equals(tempCli.ClienteId))
+                            {
+                                return tempCli;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        //RETORNA OU GERA ID PRA SESSÃO
+        public static string RetornarIdSessao()
+        {
+            if (HttpContext.Current.Session["Sessao"] == null)
+            {
+                //ESTE GUID GERA UMA SERIE ALFANUMERICA UNICA PARA CADA CARRINHO
+                Guid guid = Guid.NewGuid();
+                HttpContext.Current.Session["Sessao"] = guid.ToString();
+            }
+            return HttpContext.Current.Session["Sessao"].ToString();
+        }
+
+        public static List<Cliente> ListarClientes()
+        {
+            return entities.Clientes.ToList();
+        }
+
+
+        // LOGIN
+        public static Cliente LoginCli(Cliente cliente)
         {
             try
             {
@@ -42,108 +102,10 @@ namespace EMMC.DAO
                 }
                 return null;
             }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        //LISTAR
-        public static List<Cliente> ListarClientes()
-        {
-            return entities.Clientes.ToList();
-        }
-
-        //BUSCAR POR ID
-        public static Cliente BuscarClientePorId(int? id)
-        {
-            try
-            {
-                return entities.Clientes.Find(id);
-            }
             catch (Exception e)
             {
                 return null;
             }
         }
-
-        // Editar
-        public static bool EditarCliente(Cliente cliente)
-        {
-
-            try
-            {
-                entities.Entry(cliente).State = EntityState.Modified;
-                entities.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        // Remover
-        public static bool RemoverCliente(Cliente cliente)
-        {
-            try
-            {
-                entities.Clientes.Remove(cliente);
-                entities.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        //RETORNAR USUARIO LOGADO
-        public static Cliente RetornarClienteLogado()
-        {
-            try
-            {
-                foreach (LoginCliente temp in LoginClienteDAO.RetornarListaLoginsClientes())
-                {
-                    if (temp.LoginClienteSessao.Equals(LoginClienteDAO.RetornarIdSessao()))
-                    {
-                        foreach (Cliente cli in ListarClientes())
-                        {
-                            if (temp.LoginClienteCli.ClienteId.Equals(cli.ClienteId))
-                            {
-                                return cli;
-                            }
-                        }
-                    }
-                }
-                return null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-
-        //VERIFICA CPF EXISTENTE
-        public static bool VerificaCpfCadastrado(string cpf)
-        {
-            try
-            {
-                foreach (Cliente temp in ListarClientes())
-                {
-                    if (temp.ClienteCpf.Equals(cpf))
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
     }
 }

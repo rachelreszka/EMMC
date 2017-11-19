@@ -150,7 +150,7 @@
     <Content Include="Views\Categoria\Detalhes.cshtml" />
     <Content Include="Views\Categoria\Editar.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
-    <Content Include="Views\Cliente\Cadastro.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Deletar.cshtml" />
     <Content Include="Views\Cliente\Detalhes.cshtml" />
     <Content Include="Views\Cliente\Editar.cshtml" />
@@ -170,9 +170,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711190124345_AddBanco.cs" />
-    <Compile Include="Migrations\201711190124345_AddBanco.Designer.cs">
-      <DependentUpon>201711190124345_AddBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201711191808563_New.cs" />
+    <Compile Include="Migrations\201711191808563_New.Designer.cs">
+      <DependentUpon>201711191808563_New.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrador.cs" />
@@ -201,7 +201,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\Login.cshtml" />
-    <Content Include="Views\Administrador\Cadastro.cshtml" />
+    <None Include="Views\Administrador\Create.cshtml" />
     <Content Include="Views\Administrador\Deletar.cshtml" />
     <Content Include="Views\Administrador\Detalhes.cshtml" />
     <Content Include="Views\Administrador\Editar.cshtml" />
@@ -215,12 +215,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711190124345_AddBanco.resx">
-      <DependentUpon>201711190124345_AddBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711191808563_New.resx">
+      <DependentUpon>201711191808563_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
