@@ -9,6 +9,8 @@ namespace EMMC.DAO
     public class LoginAdministradorDAO
     {
         private static Entities entities = Singleton.Instance.Entities;
+
+        // ADD Login Admin
         public static bool AdicionaLoginAdmin(Administrador admin)
         {
             try
@@ -23,19 +25,6 @@ namespace EMMC.DAO
             catch (Exception)
             {
                 return false;
-            }
-        }
-
-        //LISTAR TODOS
-        public static List<LoginAdministrador> ListarLoginAdmin()
-        {
-            try
-            {
-                return entities.LoginAdministradores.ToList();
-            }
-            catch (Exception)
-            {
-                return null;
             }
         }
 
@@ -58,6 +47,20 @@ namespace EMMC.DAO
                     }
                 }
                 return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        // Lista de login de Administradores
+        public static List<LoginAdministrador> ListarLoginAdmin()
+        {
+            try
+            {
+                return entities.LoginAdministradores.ToList();
             }
             catch (Exception)
             {

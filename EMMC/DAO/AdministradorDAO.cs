@@ -10,6 +10,7 @@ namespace EMMC.DAO
     {
         private static Entities entities = Singleton.Instance.Entities;
 
+        // ADD Login Admin
         public static bool AdicionaLoginAdmin(Administrador admin)
         {
             try
@@ -82,6 +83,7 @@ namespace EMMC.DAO
         {
             return entities.Administradores.ToList();
         }
+
 
         // LOGIN
         public static Administrador LoginAdministrador(Administrador administrador)

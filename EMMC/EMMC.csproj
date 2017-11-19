@@ -145,16 +145,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Categorias\Cadastro.cshtml" />
-    <Content Include="Views\Categorias\Deletar.cshtml" />
-    <Content Include="Views\Categorias\Detalhes.cshtml" />
-    <Content Include="Views\Categorias\Editar.cshtml" />
-    <Content Include="Views\Categorias\Index.cshtml" />
-    <Content Include="Views\Clientes\Cadastro.cshtml" />
-    <Content Include="Views\Clientes\Deletar.cshtml" />
-    <Content Include="Views\Clientes\Detalhes.cshtml" />
-    <Content Include="Views\Clientes\Editar.cshtml" />
-    <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Categoria\Cadastro.cshtml" />
+    <Content Include="Views\Categoria\Deletar.cshtml" />
+    <Content Include="Views\Categoria\Detalhes.cshtml" />
+    <Content Include="Views\Categoria\Editar.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Cliente\Cadastro.cshtml" />
+    <Content Include="Views\Cliente\Deletar.cshtml" />
+    <Content Include="Views\Cliente\Detalhes.cshtml" />
+    <Content Include="Views\Cliente\Editar.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -193,11 +193,11 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Produtos\Cadastro.cshtml" />
-    <Content Include="Views\Produtos\Deletar.cshtml" />
-    <Content Include="Views\Produtos\Detalhes.cshtml" />
-    <Content Include="Views\Produtos\Editar.cshtml" />
-    <Content Include="Views\Produtos\Index.cshtml" />
+    <Content Include="Views\Produto\Cadastro.cshtml" />
+    <Content Include="Views\Produto\Deletar.cshtml" />
+    <Content Include="Views\Produto\Detalhes.cshtml" />
+    <Content Include="Views\Produto\Editar.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\Login.cshtml" />
@@ -207,6 +207,7 @@
     <Content Include="Views\Administrador\Editar.cshtml" />
     <Content Include="Views\Administrador\Index.cshtml" />
     <Content Include="Views\Administrador\Login.cshtml" />
+    <Content Include="Views\Cliente\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

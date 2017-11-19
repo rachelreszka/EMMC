@@ -14,9 +14,6 @@ namespace EMMC.Controllers
 {
     public class ClienteController : Controller
     {
-        private Entities db = new Entities();
-
-
         // GET: Usuario *
         public ActionResult Index()
         {
@@ -31,7 +28,7 @@ namespace EMMC.Controllers
             {
                 ModelState.AddModelError("", "É necessário fazer Login para acessar o site");
             }
-            return RedirectToAction("Login", "Administrador");
+            return RedirectToAction("Login", "Cliente");
         }
 
         
@@ -81,7 +78,7 @@ namespace EMMC.Controllers
                 {
                     if (ClienteDAO.AdicionarCliente(cliente))
                     {
-                        return RedirectToAction("Login", "Administrador");
+                        return RedirectToAction("Login", "Cliente");
                     }
                     else
                     {
@@ -136,7 +133,7 @@ namespace EMMC.Controllers
         public ActionResult Deletar(int? id)
         {
 
-            if (LoginAdministradorDAO.RetornaAdminLogado() != null)
+            if (LoginClienteDAO.RetornaClienteLogado() != null)
             {
                 if (id == null)
                 {
@@ -151,7 +148,7 @@ namespace EMMC.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Administrador");
+                return RedirectToAction("Login", "Cliente");
             }
         }
 
@@ -169,19 +166,19 @@ namespace EMMC.Controllers
             return View(cliente);
         }
         
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        // Login
+        //GET:LOGIN
         public ActionResult Login()
         {
-            return View();
+            Cliente c = new Cliente();
+            c = LoginClienteDAO.RetornaClienteLogado();
+            if (c != null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         // POST: Cliente/Login
@@ -199,13 +196,9 @@ namespace EMMC.Controllers
 
                 c = ClienteDAO.LoginCliente(c);
 
-                Guid guid = Guid.NewGuid();
-                Session["Sessao"] = guid.ToString();
-
-
                 if (c != null)
                 { // DIFERENTE DE 0 ENTAO É A ID DO USUARIO
-                    LoginClienteDAO.AdicionaLogin(c);
+                    LoginClienteDAO.AdicionaLoginCliente(c);
                     return RedirectToAction("Index");
                 }
                 else
@@ -213,10 +206,16 @@ namespace EMMC.Controllers
                     ModelState.AddModelError("", "Dados inválidos");
                 }
             }
-            return View(cliente);
+            return View();
         }
 
-
+        // Logoff
+        public ActionResult Logoff()
+        {
+            Guid guid = Guid.NewGuid();
+            Session["Sessao"] = guid.ToString();
+            return RedirectToAction("Login");
+        }
 
     }
 }

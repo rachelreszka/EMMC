@@ -12,7 +12,6 @@ namespace EMMC.DAO
         private static Entities entities = Singleton.Instance.Entities;
 
 
-        // ADD Cliente
         public static bool AdicionarCliente(Cliente cliente)
         {
             try
@@ -27,7 +26,48 @@ namespace EMMC.DAO
             }
         }
 
-        // EDIT Cliente
+        public static Cliente LoginCliente(Cliente cliente)
+        {
+            try
+            {
+                foreach (Cliente temp in entities.Clientes.ToList())
+                {
+                    if (temp.ClienteCpf.Equals(cliente.ClienteCpf))
+                    {
+                        if (temp.ClienteSenha.Equals(cliente.ClienteSenha))
+                        {
+                            return temp;
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        //LISTAR
+        public static List<Cliente> ListarClientes()
+        {
+            return entities.Clientes.ToList();
+        }
+
+        //BUSCAR POR ID
+        public static Cliente BuscarClientePorId(int? id)
+        {
+            try
+            {
+                return entities.Clientes.Find(id);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        // Editar
         public static bool EditarCliente(Cliente cliente)
         {
 
@@ -43,13 +83,7 @@ namespace EMMC.DAO
             }
         }
 
-        // LISTAR Clientes
-        public static List<Cliente> ListarClientes()
-        {
-            return entities.Clientes.ToList();
-        }
-
-        // REMOVER Cliente
+        // Remover
         public static bool RemoverCliente(Cliente cliente)
         {
             try
@@ -64,7 +98,7 @@ namespace EMMC.DAO
             }
         }
 
-        // Retornar Cliente Logado
+        //RETORNAR USUARIO LOGADO
         public static Cliente RetornarClienteLogado()
         {
             try
@@ -90,19 +124,6 @@ namespace EMMC.DAO
             }
         }
 
-        //BUSCAR POR ID
-        public static Cliente BuscarClientePorId(int? id)
-        {
-            try
-            {
-                return entities.Clientes.Find(id);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
 
         //VERIFICA CPF EXISTENTE
         public static bool VerificaCpfCadastrado(string cpf)
@@ -123,31 +144,6 @@ namespace EMMC.DAO
                 return false;
             }
         }
-
-
-        public static Cliente LoginCliente(Cliente cliente)
-        {
-            try
-            {
-                foreach (Cliente temp in entities.Clientes.ToList())
-                {
-                    if (temp.ClienteCpf.Equals(cliente.ClienteCpf))
-                    {
-                        if (temp.ClienteSenha.Equals(cliente.ClienteSenha))
-                        {
-                            return temp;
-                        }
-                    }
-                }
-                return null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-
 
     }
 }
