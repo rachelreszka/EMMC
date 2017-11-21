@@ -22,7 +22,7 @@ namespace EMMC.Controllers
             a = LoginAdministradorDAO.RetornaAdminLogado();
             if (a != null)
             {
-                return View(db.Categorias.ToList());
+                return View(CategoriaDAO.RetornarListaDeCategoriasDoAdministradorLogado());
             }
             else
             {

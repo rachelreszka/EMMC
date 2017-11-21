@@ -21,5 +21,19 @@ namespace EMMC.DAO
                 return null;
             }
         }
+
+        public static List<Categoria> RetornarListaDeCategoriasDoAdministradorLogado()
+        {
+            try
+            {
+                Administrador a = new Administrador();
+                a = LoginAdministradorDAO.RetornaAdminLogado();
+                return entities.Categorias.Where(x => x.AdministradorId.Equals(a.AdministradorId)).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
