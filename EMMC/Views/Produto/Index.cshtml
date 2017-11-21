@@ -2,10 +2,11 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TemplateCliente.cshtml";
 }
 
 <p>
-    @Html.ActionLink("Cadastrar Produto", "Create")
+    @Html.ActionLink("Cadastrar Produto", "Cadastro")
 </p>
 <table class="table">
     <tr>
@@ -33,9 +34,9 @@
             @Html.DisplayFor(modelItem => item.ProdutoQuantidade)
         </td>
         <td>
-            @Html.ActionLink("Editar Produto", "Edit", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Detalhes do Produto", "Details", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Excluir Produto", "Delete", new { id=item.ProdutoId })
+            @Html.ActionLink("Editar Produto", "Editar", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Detalhes do Produto", "Detalhes", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Excluir Produto", "Deletar", new { id=item.ProdutoId })
         </td>
     </tr>
 }

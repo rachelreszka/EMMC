@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Inativar Cliente";
+    Layout = "~/Views/Shared/TemplateCliente.cshtml";
 }
 
 <h2>Inativar cliente</h2>
@@ -38,7 +39,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
             @Html.ActionLink("Voltar para a Index", "Index")
         </div>
     } 

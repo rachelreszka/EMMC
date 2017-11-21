@@ -1,45 +1,45 @@
-﻿@model IEnumerable<EMMC.Models.Administrador>
+﻿@model IEnumerable<EMMC.Models.Produto>
 
 @{
-    ViewBag.Title = "Index Administrador";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TemplateCliente.cshtml";
 }
 
-<h2>Index Administrador</h2>
-
 <p>
-    @Html.ActionLink("Cadastrar novo administrador", "Create")
+    @Html.ActionLink("Cadastrar Produto", "Cadastro")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AdministradorNome)
+            @Html.DisplayNameFor(model => model.ProdutoNome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AdministradorCpf)
+            @Html.DisplayNameFor(model => model.ProdutoDescricao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AdministradorSenha)
+            @Html.DisplayNameFor(model => model.ProdutoQuantidade)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdministradorNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdministradorCpf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdministradorSenha)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.AdministradorId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.AdministradorId }) |
-            @Html.ActionLink("Inativar", "Delete", new { id=item.AdministradorId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoQuantidade)
+            </td>
+            <td>
+                @Html.ActionLink("Editar Produto", "Editar", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Detalhes do Produto", "Detalhes", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Excluir Produto", "Deletar", new { id = item.ProdutoId })
+            </td>
+        </tr>
+    }
 
 </table>

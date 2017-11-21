@@ -32,6 +32,7 @@
                     @Html.PasswordFor(model => model.AdministradorSenha)
 
                     <input type="submit" name="btnEntrar" value="Entrar" class="btn" />
+                    @Html.ActionLink("Cadastrar", "Cadastro", "Administrador", null, new { @class = "btn btn-primary" })
                 }
             </div>
         </div>

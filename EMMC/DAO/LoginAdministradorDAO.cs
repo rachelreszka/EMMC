@@ -80,5 +80,28 @@ namespace EMMC.DAO
             return HttpContext.Current.Session["Sessao"].ToString();
         }
 
+        public static Administrador LoginAdministrador(Administrador administrador)
+        {
+            try
+            {
+                foreach (Administrador temp in entities.Administradores.ToList())
+                {
+                    if (temp.AdministradorCpf.Equals(administrador.AdministradorCpf))
+                    {
+                        if (temp.AdministradorSenha.Equals(administrador.AdministradorSenha))
+                        {
+                            return temp;
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
     }
 }

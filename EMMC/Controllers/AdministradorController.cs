@@ -18,26 +18,47 @@ namespace EMMC.Controllers
         // GET: Administradores
         public ActionResult Index()
         {
-            return View(db.Administradores.ToList());
+
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                return View(ProdutoDAO.ListarProdutos());
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         // GET: Administradores/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Administrador administrador = db.Administradores.Find(id);
+                if (administrador == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(administrador);
             }
-            Administrador administrador = db.Administradores.Find(id);
-            if (administrador == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login");
             }
-            return View(administrador);
         }
 
         // GET: Administradores/Create
-        public ActionResult Create()
+        public ActionResult Cadastro()
         {
             return View();
         }
@@ -47,7 +68,7 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdministradorId,AdministradorCpf,AdministradorNome,AdministradorSenha")] Administrador administrador)
+        public ActionResult Cadastro([Bind(Include = "AdministradorId,AdministradorCpf,AdministradorNome,AdministradorSenha")] Administrador administrador)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +81,7 @@ namespace EMMC.Controllers
         }
 
         // GET: Administradores/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -79,7 +100,7 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdministradorId,AdministradorCpf,AdministradorNome,AdministradorSenha")] Administrador administrador)
+        public ActionResult Editar([Bind(Include = "AdministradorId,AdministradorCpf,AdministradorNome,AdministradorSenha")] Administrador administrador)
         {
             if (ModelState.IsValid)
             {
@@ -91,22 +112,31 @@ namespace EMMC.Controllers
         }
 
         // GET: Administradores/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Deletar(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Administrador administrador = db.Administradores.Find(id);
+                if (administrador == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(administrador);
             }
-            Administrador administrador = db.Administradores.Find(id);
-            if (administrador == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login");
             }
-            return View(administrador);
         }
 
         // POST: Administradores/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -153,7 +183,7 @@ namespace EMMC.Controllers
                 a.AdministradorCpf = administrador.AdministradorCpf;
                 a.AdministradorSenha = administrador.AdministradorSenha;
 
-                a = AdministradorDAO.LoginAdministrador(a);
+                a = LoginAdministradorDAO.LoginAdministrador(a);
 
                 if (a != null)
                 { // DIFERENTE DE 0 ENTAO É A ID DO USUARIO

@@ -37,7 +37,7 @@ namespace EMMC.Controllers
         }
 
         // GET: Clientes/Create
-        public ActionResult Create()
+        public ActionResult Cadastro()
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClienteId,ClienteCpf,ClienteNome,ClienteSenha")] Cliente cliente)
+        public ActionResult Cadastro([Bind(Include = "ClienteId,ClienteCpf,ClienteNome,ClienteSenha")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EMMC.Models;
+using EMMC.DAO;
 
 namespace EMMC.Controllers
 {
@@ -17,28 +18,54 @@ namespace EMMC.Controllers
         // GET: Categorias
         public ActionResult Index()
         {
-            return View(db.Categorias.ToList());
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                return View(db.Categorias.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         // GET: Categorias/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Categoria categoria = db.Categorias.Find(id);
+                if (categoria == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(categoria);
             }
-            Categoria categoria = db.Categorias.Find(id);
-            if (categoria == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(categoria);
         }
 
         // GET: Categorias/Create
-        public ActionResult Create()
+        public ActionResult Cadastro()
         {
-            return View();
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                return View();
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         // POST: Categorias/Create
@@ -46,31 +73,48 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoriaId,CategoriaNome,CategoriaDescricao")] Categoria categoria)
+        public ActionResult Cadastro([Bind(Include = "CategoriaId,CategoriaNome,CategoriaDescricao")] Categoria categoria)
         {
-            if (ModelState.IsValid)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                db.Categorias.Add(categoria);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Categorias.Add(categoria);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(categoria);
+                return View(categoria);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         // GET: Categorias/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categoria categoria = db.Categorias.Find(id);
-            if (categoria == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Categoria categoria = db.Categorias.Find(id);
+                if (categoria == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(categoria);
+            }else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(categoria);
         }
 
         // POST: Categorias/Edit/5
@@ -78,41 +122,65 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoriaId,CategoriaNome,CategoriaDescricao")] Categoria categoria)
+        public ActionResult Editar([Bind(Include = "CategoriaId,CategoriaNome,CategoriaDescricao")] Categoria categoria)
         {
-            if (ModelState.IsValid)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                db.Entry(categoria).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(categoria).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(categoria);
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(categoria);
         }
 
         // GET: Categorias/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Deletar(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categoria categoria = db.Categorias.Find(id);
-            if (categoria == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Categoria categoria = db.Categorias.Find(id);
+                if (categoria == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(categoria);
+            }else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(categoria);
         }
 
         // POST: Categorias/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Categoria categoria = db.Categorias.Find(id);
-            db.Categorias.Remove(categoria);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                Categoria categoria = db.Categorias.Find(id);
+                db.Categorias.Remove(categoria);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         protected override void Dispose(bool disposing)

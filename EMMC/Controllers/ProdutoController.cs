@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EMMC.Models;
+using EMMC.DAO;
 
 namespace EMMC.Controllers
 {
@@ -17,28 +18,52 @@ namespace EMMC.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            return View(db.Produtos.ToList());
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                return View(db.Produtos.ToList());
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         // GET: Produtos/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produto produto = db.Produtos.Find(id);
-            if (produto == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Produto produto = db.Produtos.Find(id);
+                if (produto == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(produto);
+            }else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(produto);
         }
 
         // GET: Produtos/Create
-        public ActionResult Create()
+        public ActionResult Cadastro()
         {
-            return View();
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                return View();
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         // POST: Produtos/Create
@@ -46,31 +71,49 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade")] Produto produto)
+        public ActionResult Cadastro([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade")] Produto produto)
         {
-            if (ModelState.IsValid)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                db.Produtos.Add(produto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Produtos.Add(produto);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(produto);
+                return View(produto);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
+               
         }
 
         // GET: Produtos/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produto produto = db.Produtos.Find(id);
-            if (produto == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Produto produto = db.Produtos.Find(id);
+                if (produto == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(produto);
+            }else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(produto);
         }
 
         // POST: Produtos/Edit/5
@@ -78,41 +121,65 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade")] Produto produto)
+        public ActionResult Editar([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade")] Produto produto)
         {
-            if (ModelState.IsValid)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                db.Entry(produto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(produto).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(produto);
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(produto);
         }
 
         // GET: Produtos/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Deletar(int? id)
         {
-            if (id == null)
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produto produto = db.Produtos.Find(id);
-            if (produto == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Produto produto = db.Produtos.Find(id);
+                if (produto == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(produto);
+            }else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Administrador");
             }
-            return View(produto);
         }
 
         // POST: Produtos/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produto produto = db.Produtos.Find(id);
-            db.Produtos.Remove(produto);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Administrador a = new Administrador();
+            a = LoginAdministradorDAO.RetornaAdminLogado();
+            if (a != null)
+            {
+                Produto produto = db.Produtos.Find(id);
+                db.Produtos.Remove(produto);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }else
+            {
+                return RedirectToAction("Login", "Administrador");
+            }
         }
 
         protected override void Dispose(bool disposing)
