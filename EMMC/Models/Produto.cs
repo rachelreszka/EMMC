@@ -19,5 +19,9 @@ namespace EMMC.Models
         [Display(Name = "Quantidade")]
         public int ProdutoQuantidade { get; set; }
         public Categoria categoria { get; set; }
+
+        public int CategoriaId { get; set; }
+
+        public int AdministradorId { get; set; }
     }
 }

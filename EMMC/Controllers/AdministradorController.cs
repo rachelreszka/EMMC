@@ -198,6 +198,13 @@ namespace EMMC.Controllers
             return View();
         }
 
+        public ActionResult Logoff()
+        {
+            Guid guid = Guid.NewGuid();
+            Session["Sessao"] = guid.ToString();
+            return RedirectToAction("Login");
+        }
+
 
     }
 }

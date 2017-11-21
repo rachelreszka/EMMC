@@ -6,10 +6,13 @@
 }
 
 <p>
-    @Html.ActionLink("Cadastrar Produto", "Cadastro")
+    @Html.ActionLink("Cadastrar Produto", "Cadastro", "Produto")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria.CategoriaNome)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ProdutoNome)
         </th>
@@ -26,6 +29,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.categoria.CategoriaNome)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ProdutoNome)
             </td>
             <td>
@@ -35,9 +41,9 @@
                 @Html.DisplayFor(modelItem => item.ProdutoQuantidade)
             </td>
             <td>
-                @Html.ActionLink("Editar Produto", "Editar", new { id = item.ProdutoId }) |
-                @Html.ActionLink("Detalhes do Produto", "Detalhes", new { id = item.ProdutoId }) |
-                @Html.ActionLink("Excluir Produto", "Deletar", new { id = item.ProdutoId })
+                @Html.ActionLink("Editar", "Editar", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Excluir", "Deletar", new { id = item.ProdutoId })
             </td>
         </tr>
     }

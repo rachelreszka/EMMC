@@ -5,11 +5,16 @@
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
 }
 
+<h2>Index</h2>
+
 <p>
-    @Html.ActionLink("Cadastrar Produto", "Cadastro")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria.CategoriaNome)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ProdutoNome)
         </th>
@@ -25,6 +30,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.categoria.CategoriaNome)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ProdutoNome)
         </td>
         <td>
@@ -34,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.ProdutoQuantidade)
         </td>
         <td>
-            @Html.ActionLink("Editar Produto", "Editar", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Detalhes do Produto", "Detalhes", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Excluir Produto", "Deletar", new { id=item.ProdutoId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProdutoId })
         </td>
     </tr>
 }

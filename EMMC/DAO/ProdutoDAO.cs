@@ -25,6 +25,20 @@ namespace EMMC.DAO
             }
         }
 
+        public static List<Produto> RetornarListaDeProdutosDoAdministradorLogado()
+        {
+            try
+            {
+                Administrador a = new Administrador();
+                a = LoginAdministradorDAO.RetornaAdminLogado();
+                return entities.Produtos.Where(x => x.AdministradorId.Equals(a.AdministradorId)).ToList();
+            }catch
+            {
+                return null;
+            }
+        }
+
+
 
 
     }

@@ -12,5 +12,6 @@ namespace EMMC.Models
         public string CategoriaNome { get; set; }
         [Display(Name = "Descrição da Categoria")]
         public string CategoriaDescricao { get; set; }
+        public int AdministradorId { get; set; }
     }
 }

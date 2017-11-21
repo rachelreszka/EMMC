@@ -62,7 +62,8 @@ namespace EMMC.Controllers
             if (a != null)
             {
                 return View();
-            }else
+            }
+            else
             {
                 return RedirectToAction("Login", "Administrador");
             }
@@ -81,6 +82,9 @@ namespace EMMC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    Administrador admin = new Administrador();
+                    a = LoginAdministradorDAO.RetornaAdminLogado();
+                    categoria.AdministradorId = a.AdministradorId;
                     db.Categorias.Add(categoria);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -111,7 +115,8 @@ namespace EMMC.Controllers
                     return HttpNotFound();
                 }
                 return View(categoria);
-            }else
+            }
+            else
             {
                 return RedirectToAction("Login", "Administrador");
             }
@@ -135,7 +140,8 @@ namespace EMMC.Controllers
                     return RedirectToAction("Index");
                 }
                 return View(categoria);
-            }else
+            }
+            else
             {
                 return RedirectToAction("Login", "Administrador");
             }
@@ -158,7 +164,8 @@ namespace EMMC.Controllers
                     return HttpNotFound();
                 }
                 return View(categoria);
-            }else
+            }
+            else
             {
                 return RedirectToAction("Login", "Administrador");
             }
@@ -177,7 +184,8 @@ namespace EMMC.Controllers
                 db.Categorias.Remove(categoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }else
+            }
+            else
             {
                 return RedirectToAction("Login", "Administrador");
             }

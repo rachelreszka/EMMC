@@ -1,5 +1,4 @@
 ﻿@model EMMC.Models.Administrador    
-
 <html>
 
 <head>
@@ -17,8 +16,7 @@
 
             <!--FORMULARIO DE LOGIN-->
             <div class="col s12 m12 l4">
-                <a href="@Url.Action("Index", "Home")"><h1>EMMC</h1></a>
-                <h5>Login - Administrador</h5>
+                <h2>Login</h2>
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
