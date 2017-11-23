@@ -15,12 +15,11 @@
     <section id="Login">
         <div class="row">
             <!--ESPAÇAMENTO ESQUERDA-->
-            <div class="col s12 m12 l8">
                 <br />
-            </div>
-
+           
+            
             <!--FORMULARIO DE LOGIN-->
-            <div class="col s12 m12 l4">
+            <div class="col-l4">
                 <h2>Login</h2>
                 @using (Html.BeginForm())
                 {
@@ -28,17 +27,18 @@
 
                     @Html.ValidationSummary(true, "", new { @class = "text-red" })
 
-                    <label>CPF</label>
+                    <label>CPF</label><br/>
                     @Html.EditorFor(model => model.AdministradorCpf)
-
-                    <label>Senha</label>
+                    <br /><br/>
+                    <label>Senha</label><br/>
                     @Html.PasswordFor(model => model.AdministradorSenha)
-
+                    <br/><br/>
                     <input type="submit" name="btnEntrar" value="Entrar" class="btn" />
                     @Html.ActionLink("Cadastrar", "Cadastro", "Administrador", null, new { @class = "btn btn-primary" })
                 }
             </div>
-        </div>
+             </div>
+
     </section>
 </body>
 </html>
