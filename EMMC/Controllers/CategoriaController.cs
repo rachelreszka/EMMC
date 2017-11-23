@@ -74,7 +74,7 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastro([Bind(Include = "CategoriaId,CategoriaNome,CategoriaDescricao")] Categoria categoria)
+        public ActionResult Cadastro([Bind(Include = "CategoriaId,CategoriaNome,CategoriaDescricao, AdministradorId")] Categoria categoria)
         {
             Administrador a = new Administrador();
             a = LoginAdministradorDAO.RetornaAdminLogado();

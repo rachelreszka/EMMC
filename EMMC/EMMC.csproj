@@ -128,6 +128,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Spacelab.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -163,17 +164,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711211312065_AddBanco.cs" />
-    <Compile Include="Migrations\201711211312065_AddBanco.Designer.cs">
-      <DependentUpon>201711211312065_AddBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711211326056_AtualizacaoBanco.cs" />
-    <Compile Include="Migrations\201711211326056_AtualizacaoBanco.Designer.cs">
-      <DependentUpon>201711211326056_AtualizacaoBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711211337037_AtualizarBanco2.cs" />
-    <Compile Include="Migrations\201711211337037_AtualizarBanco2.Designer.cs">
-      <DependentUpon>201711211337037_AtualizarBanco2.cs</DependentUpon>
+    <Compile Include="Migrations\201711230221485_AddBanco.cs" />
+    <Compile Include="Migrations\201711230221485_AddBanco.Designer.cs">
+      <DependentUpon>201711230221485_AddBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrador.cs" />
@@ -193,18 +186,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Views\Administrador\Cadastro.cshtml" />
-    <Content Include="Views\Administrador\Deletar.cshtml" />
-    <Content Include="Views\Administrador\Detalhes.cshtml" />
-    <Content Include="Views\Administrador\Editar.cshtml" />
     <Content Include="Views\Administrador\Index.cshtml" />
     <Content Include="Views\Administrador\Login.cshtml" />
     <Content Include="Views\Shared\TemplateCliente.cshtml" />
-    <Content Include="Views\Produto\Create.cshtml" />
-    <Content Include="Views\Produto\Delete.cshtml" />
-    <Content Include="Views\Produto\Details.cshtml" />
-    <Content Include="Views\Produto\Edit.cshtml" />
+    <Content Include="Views\Produto\Cadastro.cshtml" />
+    <Content Include="Views\Produto\Deletar.cshtml" />
+    <Content Include="Views\Produto\Detalhes.cshtml" />
+    <Content Include="Views\Produto\Editar.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Administrador\Cadastro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,14 +203,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711211312065_AddBanco.resx">
-      <DependentUpon>201711211312065_AddBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711211326056_AtualizacaoBanco.resx">
-      <DependentUpon>201711211326056_AtualizacaoBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711211337037_AtualizarBanco2.resx">
-      <DependentUpon>201711211337037_AtualizarBanco2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711230221485_AddBanco.resx">
+      <DependentUpon>201711230221485_AddBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

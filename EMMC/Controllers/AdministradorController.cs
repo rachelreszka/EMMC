@@ -23,7 +23,7 @@ namespace EMMC.Controllers
             a = LoginAdministradorDAO.RetornaAdminLogado();
             if (a != null)
             {
-                return View(ProdutoDAO.ListarProdutos());
+                return View(ProdutoDAO.RetornarListaDeProdutosDoAdministradorLogado());
             }
             else
             {

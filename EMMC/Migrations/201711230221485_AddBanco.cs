@@ -25,6 +25,7 @@ namespace EMMC.Migrations
                         CategoriaId = c.Int(nullable: false, identity: true),
                         CategoriaNome = c.String(),
                         CategoriaDescricao = c.String(),
+                        AdministradorId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoriaId);
             
@@ -49,6 +50,7 @@ namespace EMMC.Migrations
                         ProdutoDescricao = c.String(),
                         ProdutoQuantidade = c.Int(nullable: false),
                         CategoriaId = c.Int(nullable: false),
+                        AdministradorId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ProdutoId)
                 .ForeignKey("dbo.Categorias", t => t.CategoriaId, cascadeDelete: true)

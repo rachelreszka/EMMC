@@ -13,18 +13,17 @@ namespace EMMC.Controllers
 {
     public class ProdutoController : Controller
     {
-        private Entities db = new Entities();
+        private Entities db = Singleton.Instance.Entities;
 
         // GET: Produto
         public ActionResult Index()
         {
-
             var produtos = db.Produtos.Include(p => p.categoria);
             return View(ProdutoDAO.RetornarListaDeProdutosDoAdministradorLogado());
         }
 
         // GET: Produto/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
@@ -39,9 +38,11 @@ namespace EMMC.Controllers
         }
 
         // GET: Produto/Create
-        public ActionResult Create()
+        public ActionResult Cadastro()
         {
-            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "CategoriaNome");
+            List<Categoria> ListaCategoria = new List<Categoria>();
+            ListaCategoria = CategoriaDAO.RetornarListaDeCategoriasDoAdministradorLogado();
+            ViewBag.CategoriaId = new SelectList(ListaCategoria, "CategoriaId", "CategoriaNome");
             return View();
         }
 
@@ -50,7 +51,7 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade,CategoriaId")] Produto produto)
+        public ActionResult Cadastro([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade,CategoriaId")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +68,7 @@ namespace EMMC.Controllers
         }
 
         // GET: Produto/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -87,7 +88,7 @@ namespace EMMC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade,CategoriaId")] Produto produto)
+        public ActionResult Editar([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade,CategoriaId")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +101,7 @@ namespace EMMC.Controllers
         }
 
         // GET: Produto/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Deletar(int? id)
         {
             if (id == null)
             {
@@ -115,7 +116,7 @@ namespace EMMC.Controllers
         }
 
         // POST: Produto/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
