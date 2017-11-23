@@ -7,13 +7,13 @@ namespace EMMC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddBanco : IMigrationMetadata
+    public sealed partial class ADDBANCO : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddBanco));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ADDBANCO));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711230221485_AddBanco"; }
+            get { return "201711231118554_ADDBANCO"; }
         }
         
         string IMigrationMetadata.Source

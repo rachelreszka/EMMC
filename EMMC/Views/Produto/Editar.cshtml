@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
 }
 
-<h2>Editar Produto</h2>
+<h2 style="text-align:center;">Editar Produto</h2>
 
 
 @using (Html.BeginForm())
@@ -58,7 +58,7 @@
 }
 
 <div>
-    @Html.ActionLink("Voltar para a Index", "Index")
+    @Html.ActionLink("Index", "Index", "", new { @class = "btn btn-warning btn-sm" })
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

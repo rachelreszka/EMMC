@@ -5,19 +5,11 @@
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
 }
 
-<h2>Detalhes do Produto</h2>
+<h2 style="text-align:center;">Detalhes do Produto</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.categoria.CategoriaNome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.categoria.CategoriaNome)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ProdutoNome)
         </dt>
@@ -45,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Editar", new { id = Model.ProdutoId }) |
-    @Html.ActionLink("Voltar para a Index", "Index")
+    @Html.ActionLink("Editar", "Editar", new { id = Model.ProdutoId }, new { @class = "btn btn-info btn-sm" }) 
+    @Html.ActionLink("Index", "Index", "", new { @class = "btn btn-warning btn-sm" })
 </p>

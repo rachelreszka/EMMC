@@ -3,12 +3,14 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
+    List<EMMC.Models.Categoria> RetornarCategorias = new List<EMMC.Models.Categoria>();
+    RetornarCategorias = EMMC.DAO.CategoriaDAO.RetornarListaDeCategoriasDoAdministradorLogado();
 }
 
-<h2>Index</h2>
+<h2 style="text-align: center;">Categorias</h2>
 
 <p>
-    @Html.ActionLink("Cadastrar nova categoria", "Cadastro")
+    @Html.ActionLink("Cadastrar nova categoria", "Cadastro", "", new { @class = "btn btn-primary btn-sm" })
 </p>
 <table class="table">
     <tr>
@@ -30,9 +32,9 @@
             @Html.DisplayFor(modelItem => item.CategoriaDescricao)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.CategoriaId }) |
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.CategoriaId }) |
-            @Html.ActionLink("Deletar", "Deletar", new { id=item.CategoriaId })
+            @Html.ActionLink("Editar", "Editar", new { id=item.CategoriaId }, new {@class="btn btn-primary btn-sm"}) 
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.CategoriaId }, new { @class = "btn btn-info btn-sm" }) 
+            @Html.ActionLink("Deletar", "Deletar", new { id=item.CategoriaId }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }

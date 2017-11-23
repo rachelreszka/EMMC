@@ -4,18 +4,28 @@
     <meta name="viewport" content="width=device-width" />
     <title>EMMC</title>
     <link href="~/content/Spacelab.min.css" rel="stylesheet" />
+   <style>
+       nav .btn-primary{
+           color: #ffffff !important; 
+       }
+   </style>
 </head>
 <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <div class="navbar-header">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("EMMC", "Index", "Administrador")</li>
                     <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
                     <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
-                    <li>@Html.ActionLink("Logoff", "Login", "Administrador", new { @class = "btn red" })</li>
                 </ul>
+               
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Logoff", "Login", "Administrador", string.Empty, new { @class = "btn btn-primary btn-sm" })
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container">

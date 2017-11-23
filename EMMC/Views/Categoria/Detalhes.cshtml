@@ -3,9 +3,11 @@
 @{
     ViewBag.Title = "Detalhes";
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
+    List<EMMC.Models.Categoria> RetornarCategorias = new List<EMMC.Models.Categoria>();
+    RetornarCategorias = EMMC.DAO.CategoriaDAO.RetornarListaDeCategoriasDoAdministradorLogado();
 }
 
-<h2>Detalhes da Categoria</h2>
+<h2 style="text-align:center;">Detalhes da Categoria</h2>
 
 <div>
     <hr />
@@ -29,6 +31,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Editar", new { id = Model.CategoriaId }) |
-    @Html.ActionLink("Voltar para a Index", "Index")
+    @Html.ActionLink("Editar", "Editar", new { id = Model.CategoriaId }, new { @class = "btn btn-info btn-sm" }) 
+    @Html.ActionLink("Index", "Index", "", new { @class = "btn btn-warning btn-sm" })
 </p>

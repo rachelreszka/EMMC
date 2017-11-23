@@ -102,6 +102,12 @@ namespace EMMC.DAO
             }
         }
 
+        public static void Logoff()
+        {
+            Guid guid = Guid.NewGuid();
+            HttpContext.Current.Session["Sessao"] = guid.ToString();
+        }
+
 
     }
 }

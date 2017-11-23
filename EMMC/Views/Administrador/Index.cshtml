@@ -3,11 +3,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
+    List<EMMC.Models.Categoria> RetornarCategorias = new List<EMMC.Models.Categoria>();
+    RetornarCategorias = EMMC.DAO.CategoriaDAO.RetornarListaDeCategoriasDoAdministradorLogado();
 }
 
-<p>
-    @Html.ActionLink("Cadastrar Produto", "Cadastro", "Produto")
-</p>
+<h2 style="text-align: center;">Produtos</h2>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -39,11 +40,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProdutoQuantidade)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", "Produto", new { id = item.ProdutoId }) |
-                @Html.ActionLink("Detalhes", "Detalhes", "Produto", new { id = item.ProdutoId }) |
-                @Html.ActionLink("Excluir", "Deletar", "Produto", new { id = item.ProdutoId })
             </td>
         </tr>
     }

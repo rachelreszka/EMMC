@@ -158,6 +158,7 @@ namespace EMMC.Controllers
         //GET:LOGIN
         public ActionResult Login()
         {
+            LoginAdministradorDAO.Logoff();
             Administrador a = new Administrador();
             a = LoginAdministradorDAO.RetornaAdminLogado();
             if (a != null)
@@ -177,6 +178,7 @@ namespace EMMC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login([Bind(Include = "AdministradorCpf,AdministradorSenha")] Administrador administrador)
         {
+
             Administrador a = new Administrador();
             if (ModelState.IsValid)
             {

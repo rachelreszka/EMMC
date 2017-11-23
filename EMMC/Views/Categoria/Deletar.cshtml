@@ -3,9 +3,11 @@
 @{
     ViewBag.Title = "Deletar Categoria";
     Layout = "~/Views/Shared/TemplateCliente.cshtml";
+    List<EMMC.Models.Categoria> RetornarCategorias = new List<EMMC.Models.Categoria>();
+    RetornarCategorias = EMMC.DAO.CategoriaDAO.RetornarListaDeCategoriasDoAdministradorLogado();
 }
 
-<h2>Deletar Categoria</h2>
+<h2 style="text-align:center;">Deletar Categoria</h2>
 
 <h3>Você tem certeza disso?</h3>
 <div>
@@ -34,7 +36,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Deletar" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar para a Index", "Index")
+            @Html.ActionLink("Index", "Index", "", new { @class = "btn btn-warning btn-sm" })
         </div>
     }
 </div>

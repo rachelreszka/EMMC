@@ -13,7 +13,7 @@ namespace EMMC.Controllers
 {
     public class ProdutoController : Controller
     {
-        private Entities db = Singleton.Instance.Entities;
+        private Entities db = new Entities();
 
         // GET: Produto
         public ActionResult Index()
@@ -90,8 +90,10 @@ namespace EMMC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Editar([Bind(Include = "ProdutoId,ProdutoNome,ProdutoDescricao,ProdutoQuantidade,CategoriaId")] Produto produto)
         {
+            Administrador a = new Administrador();
             if (ModelState.IsValid)
             {
+                produto.AdministradorId = a.AdministradorId;
                 db.Entry(produto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -120,7 +122,9 @@ namespace EMMC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            Administrador a = new Administrador();
             Produto produto = db.Produtos.Find(id);
+            produto.AdministradorId = a.AdministradorId;
             db.Produtos.Remove(produto);
             db.SaveChanges();
             return RedirectToAction("Index");

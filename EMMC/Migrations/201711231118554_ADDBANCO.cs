@@ -3,7 +3,7 @@ namespace EMMC.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddBanco : DbMigration
+    public partial class ADDBANCO : DbMigration
     {
         public override void Up()
         {

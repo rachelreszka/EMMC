@@ -164,9 +164,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711230221485_AddBanco.cs" />
-    <Compile Include="Migrations\201711230221485_AddBanco.Designer.cs">
-      <DependentUpon>201711230221485_AddBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201711231118554_ADDBANCO.cs" />
+    <Compile Include="Migrations\201711231118554_ADDBANCO.Designer.cs">
+      <DependentUpon>201711231118554_ADDBANCO.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrador.cs" />
@@ -203,8 +203,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711230221485_AddBanco.resx">
-      <DependentUpon>201711230221485_AddBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711231118554_ADDBANCO.resx">
+      <DependentUpon>201711231118554_ADDBANCO.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

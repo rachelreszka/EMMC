@@ -135,6 +135,7 @@ namespace EMMC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    categoria.AdministradorId = a.AdministradorId;
                     db.Entry(categoria).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -181,6 +182,7 @@ namespace EMMC.Controllers
             if (a != null)
             {
                 Categoria categoria = db.Categorias.Find(id);
+                categoria.AdministradorId = a.AdministradorId;
                 db.Categorias.Remove(categoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");
